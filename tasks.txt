@@ -1,0 +1,19 @@
+HECHO modelado de base de datos
+
+autenticacion de usuarios
+
+    CRUD personajes
+obtener todos     HECHO
+crear               HECHO
+editar           
+eliminar           HECHO
+
+busqueda de personajes
+por nombre         HECHO
+por edad
+por titulo de la pelicula
+
+busqueda de peliculas
+buscar por titulo
+ordenarlas por fecha de creacion
+asc y desc

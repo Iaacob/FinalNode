@@ -18,6 +18,25 @@ class PeliculasServices {
         
         
     }
+
+    //traer pelicula por titulo
+    getPeliculaByTitulo = async ( req,res ) => {
+        const { titulo } = req.params;
+        try {
+            const pool = await getConnection();
+            const result = await pool
+                .request()
+                .input("titulo", sql.String, titulo)
+                .query('SELECT * FROM Peliculas WHERE titulo = @titulo');
+            res.json(result.rows).status(200);
+        } 
+        catch (error) {
+            res.status(500);
+            res.send(error.msg("Error en el servidor"));        
+        }
+    };
+        
+
 }
 
 export default PeliculasServices;
