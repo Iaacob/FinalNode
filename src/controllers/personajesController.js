@@ -20,22 +20,33 @@ router.post('', async (req,res) => {
     
 });
 
-//eliminacion de personaje:
-router.delete('/Personajes/:id', async(req,res) => {
-    try{
-        const personajeDelete = await personajesServices.deleteById(req.params['id']);
-        return res.status(200).send('personaje borrado');
-    }catch(error){
-        return res.status(400).send('error en el server');
-    }
-    
-})
-
 //obtener todos los personajes:
 router.get('/personajes', async (res) => {
     const personajes = await personajesServices.getAll();
     return res.status(200).json(personajes);
 });
+
+//eliminacion de personaje por id:
+router.delete('/Personajes/:id', async(req,res) => {
+    try{
+        await personajesServices.deleteById(req.params['id']);
+        return res.status(200).send('personaje borrado');
+    }catch(error){
+        return res.status(500).send('error en el server');
+    }
+});
+
+//eliminacion de todos los personajes:
+router.delete('/personajes', async (res) => {
+    try{
+        await personajesServices.deleteAll();
+        return res.status(200).send('personajes borrado');
+    }catch(error){
+        res.status(500);
+        res.send(error.msg("Error en el servidor"));
+    }
+});
+
 
 
 //llamado a la funcion de obtener personaje por nombre
