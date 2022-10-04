@@ -65,25 +65,27 @@ class PersonajesServices {
     }
 
     //crear personaje
-    insertPersonaje = async (req, res) => {
-        const name = req.body;
+    insertPersonaje = async (personaje) => {
 
-        if (name == null) {
-            return res.status(400).json({ msg: "faltan datos" });
-        }
-
+        let returnEntity = null;
+        // hacer que la fecha creacion se ponga sin el usuario
         try {
-            const pool = await getConnection();
-            await pool
-                .request()
-                .input("name", sql.VarChar(50), name)
-                .query('INSERT INTO Personajes (name) VALUES (@name)')
-            res.json({ name }).status(200);
-        } catch (error) {
-            res.status(500);
-            res.send(error.msg("Error en el servidor"));
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pImagen', sql.VarChar(150), personaje.Imagen)
+                .input('pNombre', sql.VarChar(50), personaje.Nombre)
+                .input('pEdad', sql.Int, personaje.Edad)
+                .input('pPeso', sql.Float, personaje.Peso)
+                .input('pHistoria', sql.VarChar(350), personaje.Historia)
+                .query(`INSERT INTO Personaje (Imagen, Nombre, Edad, Peso, Historia)
+                                            VALUES (@pImagen, @pNombre, @pEdad, @pPeso, @pHistoria)`);
+            returnEntity = result.recordsets;
         }
-    };
+        catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
 
 }
 

@@ -15,8 +15,7 @@ class PeliculasServices {
         } catch (error) {
             console.log(error)
         }
-        
-        
+
     }
 
     //traer pelicula por titulo
