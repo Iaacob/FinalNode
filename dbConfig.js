@@ -1,8 +1,8 @@
 const config = {
     user: 'iaacob',
-    password: 'Jaco1137',
-    server: 'A-PHZ2-CIDI-005',
-    database: 'tpFinal',
+    password: 'contraseña',
+    server: 'A-PHZ2-CIDI-018',
+    database: 'finalNode',
     options: {
         trustServerCertificate  : true,
         trustedConection : true

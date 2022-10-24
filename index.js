@@ -23,4 +23,3 @@ app.use(router)
 
 //
 
-console.log("hola")
