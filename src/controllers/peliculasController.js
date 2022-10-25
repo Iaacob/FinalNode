@@ -7,8 +7,3 @@ const peliculasServices = new PeliculasServices();
 const pelicula = new Pelicula();
 
 
-//ACA FALTA
-router.postrouter.get('/Peliculass/:titulo', async (res) => {
-    const pelicula = await peliculasServices.getPeliculasByTitulo();
-    return res.status(200).json(personaje);
-});

@@ -1,7 +1,7 @@
 const config = {
     user: 'iaacob',
     password: 'contraseña',
-    server: 'A-PHZ2-CIDI-018',
+    server: 'A-PHZ2-AMI-003',
     database: 'finalNode',
     options: {
         trustServerCertificate  : true,
