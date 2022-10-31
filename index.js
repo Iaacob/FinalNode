@@ -1,5 +1,5 @@
 import express from "express"
-import router from "./src/controllers/personajesController.js";
+import routerPersonajes from "./src/controllers/personajesController.js";
 
 //express es la funcion que va guardada adentro de app
 const app = express();
@@ -7,11 +7,14 @@ const app = express();
 //constante del puerto a abrir
 const port = 3000;
 
+app.use(express.json()) 
+app.use("/api/personajes", routerPersonajes)
+
 app.listen(port, () => {
     console.log(`tuki ${port}`)
 })
 
-app.use(router)
+
 
 // res es respuesta
 // cuando app recibe un get, manda lo que hay adentro
